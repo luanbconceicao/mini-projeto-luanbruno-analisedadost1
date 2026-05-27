@@ -43,7 +43,6 @@ for coluna in df.columns:
 # Conversão de células preenchidas com NULL, N/A ou vazias para np.nan para que possam ser detectadas pelo método isnull()
 # Não precisou ser convertido nenhuma celular para np.nan
 print("\n=== CONTAGEM E CONVERSÃO DE STRINGS QUE REPRESENTAM NULOS  ===")
-print(df.isnull().sum())
 df_limpo = df.replace({'NULL': np.nan, 'N/A': np.nan, '': np.nan})
 print(f"Numero de nulos antes do replace de nulos: {df.isnull().sum().sum()}")
 print(f"Numero de nulos depois do replace de nulos: {df_limpo.isnull().sum().sum()}")
@@ -63,3 +62,11 @@ print(f"Tipo da coluna antes: {df['DATA'].dtype}")
 df['DATA'] = pd.to_datetime(df['DATA'], format='%d/%m/%Y')
 print(f"Tipo da coluna depois: {df['DATA'].dtype}")
 
+print("\n=== REMOÇÃO DE DUPLICATAS ===")
+print(f"Número de linhas antes do tratamento de duplicatas: {df.shape[0]}")
+df = df.drop_duplicates()
+print(f"Número de linhas após do tratamento de duplicatas: {df.shape[0]}")
+
+
+print("\n=== PRIMEIRAS 5 LINHAS APÓS A LIMPEZA ===")
+print(df.head(5))
