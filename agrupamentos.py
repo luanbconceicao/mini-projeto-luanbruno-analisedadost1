@@ -9,8 +9,12 @@ def num_compras_genero(df):
 
 def num_compras_filho(df):
   print("\n=== NÚMERO DE COMPRAS POR QUANTIDADE DE FILHOS ===")
-  agrupamento = df.groupby('CL_FHL')['CO_ID'].count()
+  # Média de compras por cliente dentro de cada grupo de filhos
+  agrupamento = df.groupby('CL_FHL')['CO_ID'].count() / df.groupby('CL_FHL')['CL_ID'].nunique()
+  
+  print("Média de compras por cliente por número de filhos:")
   print(agrupamento)
+  print(f"\nGrupo com maior média de compras: {agrupamento.idxmax()} filhos com média de {agrupamento.max():.2f} compras")
 
 def cat_pr_vendas(df):
   print("\n=== CATEGORIAS E PRODUTO COM MAIOR NÚMERO DE VENDAS ===")
