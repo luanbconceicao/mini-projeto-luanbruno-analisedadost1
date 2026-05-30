@@ -11,6 +11,7 @@ import numpy as np
 from exploracao import explorar
 from transformacao import *
 from estatisticas import desc_col_num_filhos
+from agrupamentos import *
 
 # Carregamento da base de dados
 df = pd.read_csv('BaseVarejo.csv', sep=';')
@@ -52,4 +53,15 @@ print(df.head(5))
 print("\n=== ESTATÍSTICAS DESCRITIVAS: NÚMERO DE FILHOS (CL_FHL) ===")
 desc_col_num_filhos(df)
 
-print(df['PR_CAT'].unique())
+# =========================================================================
+# PARTE 3: Exploração de agrupamentos
+# =========================================================================
+
+# Função para retornar o número de compras por genero
+num_compras_genero(df)
+
+# Função para retornar o número de compras por quantidade de filho
+num_compras_filho(df)
+
+# Função para retornar o número de vendas por categoria e o produto mais vendido 
+cat_pr_vendas(df)
