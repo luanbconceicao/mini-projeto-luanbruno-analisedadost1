@@ -31,7 +31,11 @@ print("\n=== CONTAGEM DE VALORES NULOS POR COLUNA ===")
 print(df.isnull().sum())
 
 print("\n=== REMOÇÃO DE COLUNAS COM TODOS OS VALORES NULOS ===")
-df = remover_colunas_vazias(df)
+df = remover_colunas_e_linhas_vazias(df)
+
+print("\n=== CONTAGEM DE VALORES NULOS POR COLUNA ===")
+print(df.isnull().sum())
+
 
 print("\n=== CONVERSÃO DA COLUNA DATA DE STRING PARA DATETIME ===")
 df['DATA'] = converter_data(df['DATA'])
@@ -47,3 +51,5 @@ print(df.head(5))
 # =========================================================================
 print("\n=== ESTATÍSTICAS DESCRITIVAS: NÚMERO DE FILHOS (CL_FHL) ===")
 desc_col_num_filhos(df)
+
+print(df['PR_CAT'].unique())

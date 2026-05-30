@@ -13,19 +13,23 @@ def remover_espacos(df):
 # Conversão de células preenchidas com NULL, N/A ou vazias para np.nan para que possam ser detectadas pelo método isnull()
 def conversor_nulos(df):
   print(f"Numero de nulos antes do replace de nulos: {df.isnull().sum().sum()}")
-  df = df.replace({'NULL': np.nan, 'N/A': np.nan, '': np.nan})
+  df = df.replace({'NULL': np.nan, 'N/A': np.nan, '#N/D': np.nan , '': np.nan})
   print(f"Numero de nulos depois do replace de nulos: {df.isnull().sum().sum()}")
 
   return df
 
-# Foi descidido remover os valores nulos, pois são 3 colunas onde todos os valores inclusive o nome da coluna estão com os valores vazios
-def remover_colunas_vazias(df):
-  print(f"Número de colunas antes: {len(df.columns)}")
-  df = df.dropna(axis=1, how='all')
-  print(f"Número de colunas depois: {len(df.columns)}")
-  print(f"Número de valores nulos no Data Frame: {df.isnull().sum().sum()}")
+# Foi descidido remover os valores nulos, pois são 3 colunas onde todos os valores inclusive o nome da coluna estão com os valores vazios. Além disso, foi removido algumas linhas estão com os valores de categoria e nomes vazios
+def remover_colunas_e_linhas_vazias(df):
+    print(f"Número de colunas antes: {len(df.columns)}")
+    df = df.dropna(axis=1, how='all')
+    print(f"Número de colunas depois: {len(df.columns)}")
 
-  return df
+    print(f"Número de linhas antes: {df.shape[0]}")
+    df = df.dropna()
+    print(f"Número de linhas depois: {df.shape[0]}")
+
+    print(f"Número de valores nulos restantes: {df.isnull().sum().sum()}")
+    return df
 
 def converter_data(series_data):
   print(f"Tipo da coluna antes: {series_data.dtype}")
