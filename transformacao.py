@@ -10,16 +10,17 @@ def remover_espacos(df):
       
   return df
 
-# Conversão de células preenchidas com NULL, N/A ou vazias para np.nan para que possam ser detectadas pelo método isnull()
 def conversor_nulos(df):
+  print("\n=== CONTAGEM E CONVERSÃO DE STRINGS QUE REPRESENTAM NULOS  ===")
   print(f"Numero de nulos antes do replace de nulos: {df.isnull().sum().sum()}")
   df = df.replace({'NULL': np.nan, 'N/A': np.nan, '#N/D': np.nan , '': np.nan})
   print(f"Numero de nulos depois do replace de nulos: {df.isnull().sum().sum()}")
 
   return df
 
-# Foi descidido remover os valores nulos, pois são 3 colunas onde todos os valores inclusive o nome da coluna estão com os valores vazios. Além disso, foi removido algumas linhas estão com os valores de categoria e nomes vazios
+# Foi descidido remover os valores nulos, pois são 3 colunas onde todos os valores inclusive o nome da coluna estão com os valores vazios. Além disso, foi removido algumas linhas que estão com os valores de categoria e nomes vazios
 def remover_colunas_e_linhas_vazias(df):
+    print("\n=== REMOÇÃO DE COLUNAS COM TODOS OS VALORES NULOS ===")
     print(f"Número de colunas antes: {len(df.columns)}")
     df = df.dropna(axis=1, how='all')
     print(f"Número de colunas depois: {len(df.columns)}")
@@ -32,14 +33,15 @@ def remover_colunas_e_linhas_vazias(df):
     return df
 
 def converter_data(series_data):
+  print("\n=== CONVERSÃO DA COLUNA DATA DE STRING PARA DATETIME ===")
   print(f"Tipo da coluna antes: {series_data.dtype}")
   series_data = pd.to_datetime(series_data, format='%d/%m/%Y')
   print(f"Tipo da coluna depois: {series_data.dtype}")
   
   return series_data
 
-#Função para remover linhas que possuem todos os valores iguais, deixando apenas a primeira
 def remover_duplicatas(df):
+  print("\n=== REMOÇÃO DE DUPLICATAS ===")
   print(f"Número de linhas antes do tratamento de duplicatas: {df.shape[0]}")
   df = df.drop_duplicates()
   print(f"Número de linhas após do tratamento de duplicatas: {df.shape[0]}")

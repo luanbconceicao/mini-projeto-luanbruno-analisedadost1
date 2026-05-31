@@ -14,7 +14,7 @@ def desc_col_num_filhos(df):
   quartil1 = df['CL_FHL'].quantile(0.25)
   quartil3 = df['CL_FHL'].quantile(0.75)
   
-
+  print("\n=== ESTATÍSTICAS DESCRITIVAS: NÚMERO DE FILHOS (CL_FHL) ===")
   print(f"Média: {media:.2f} filho(s)")
   print(f"Mediana: {mediana} filho(s)")
   print(f"Desvio Padrão: {desvio_padrao:.2f}")
