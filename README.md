@@ -1,15 +1,21 @@
 Sobre o Projeto
 Análise Exploratória de Dados (AED) aplicada a uma base real de compras do varejo com 830.000 registros. O objetivo é transformar dados brutos em informações úteis, identificando problemas, realizando limpeza e extraindo insights.
 
+## 🗂️ Estrutura dos Arquivos
+
+```
 mini-projeto/
-├── main.py  
-├── exploracao.py  
-├── transformacao.py  
-├── estatisticas.py  
-├── agrupamentos.py  
-├── BaseVarejo.csv  
-├── requirements.txt  
-└── README.md
+├── main.py
+├── exploracao.py
+├── transformacao.py
+├── estatisticas.py
+├── agrupamentos.py
+├── BaseVarejo.csv
+├── df_limpo.csv
+├── requirements.txt
+├── README.md
+└── README_LuanBruno_AnaliseDadosT1.md
+```
 
 Insights Obtidos
 
