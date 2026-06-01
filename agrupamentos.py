@@ -5,7 +5,7 @@ def num_compras_genero(df):
   agrupamento = df.groupby('CL_GENERO')['CO_ID'].count()
 
   print(f"Número mulheres: {agrupamento['F']}")
-  print(f"Número por homens: {agrupamento['M']}")
+  print(f"Número homens: {agrupamento['M']}")
 
 def num_compras_filho(df):
   print("\n=== NÚMERO DE COMPRAS POR QUANTIDADE DE FILHOS ===")
@@ -13,8 +13,8 @@ def num_compras_filho(df):
   agrupamento = df.groupby('CL_FHL')['CO_ID'].count() / df.groupby('CL_FHL')['CL_ID'].nunique()
   
   print("Média de compras por cliente por número de filhos:")
-  print(agrupamento)
-  print(f"\nGrupo com maior média de compras: {agrupamento.idxmax()} filhos com média de {agrupamento.max():.2f} compras")
+  print(agrupamento.round(0).astype(int))
+  print(f"\nGrupo com maior média de compras: {agrupamento.idxmax()} filhos com média de {agrupamento.max():.0f} compras")
 
 def cat_pr_vendas(df):
   print("\n=== CATEGORIAS E PRODUTO COM MAIOR NÚMERO DE VENDAS ===")
@@ -24,4 +24,4 @@ def cat_pr_vendas(df):
 
   print(agrupamento_cat)
 
-  print(f"\nO produto mais vendido foi o {agrupamento_produto.idxmax()}, com {agrupamento_produto.max()} vendas.")
+  print(f"\nA categoria mais vendida foi de {agrupamento_cat.idxmax()}. E o produto mais vendido foi o {agrupamento_produto.idxmax()}, com {agrupamento_produto.max()} vendas.")

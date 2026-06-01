@@ -18,16 +18,22 @@ def conversor_nulos(df):
 
   return df
 
-# Foi descidido remover os valores nulos, pois são 3 colunas onde todos os valores inclusive o nome da coluna estão com os valores vazios. Além disso, foi removido algumas linhas que estão com os valores de categoria e nomes vazios
-def remover_colunas_e_linhas_vazias(df):
+# Função que verifica que o valor é nulo, caso seja, o if a qual coluna pertense para preencher 'Sem Categoria' ou 'Sem Nome'
+def verificar_nulo(valor, coluna):
+    if pd.isna(valor):
+        if coluna == 'PR_CAT':
+            return 'Sem Categoria'
+        else:
+            return 'Sem Nome'
+    else:
+        return valor
+    
+# Foi descidido remover os valores nulos restantes, pois são 3 colunas onde todos os valores inclusive o nome da coluna estão com os valores vazios.
+def remover_colunas_vazias(df):
     print("\n=== REMOÇÃO DE COLUNAS COM TODOS OS VALORES NULOS ===")
     print(f"Número de colunas antes: {len(df.columns)}")
     df = df.dropna(axis=1, how='all')
     print(f"Número de colunas depois: {len(df.columns)}")
-
-    print(f"Número de linhas antes: {df.shape[0]}")
-    df = df.dropna()
-    print(f"Número de linhas depois: {df.shape[0]}")
 
     print(f"Número de valores nulos restantes: {df.isnull().sum().sum()}")
     return df
